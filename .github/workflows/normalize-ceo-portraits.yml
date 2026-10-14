@@ -1,0 +1,32 @@
+name: Normalize CEO Hero Portraits
+on:
+  push:
+    branches:
+      - feature/consistent-ceo-portraits-v10
+    paths:
+      - scripts/normalize_ceo_portraits.py
+      - .github/workflows/normalize-ceo-portraits.yml
+
+permissions:
+  contents: write
+jobs:
+  generate-aligned-portraits:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout feature branch
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install image library
+        run: python -m pip install "Pillow>=11,<13"
+      - name: Normalize navy and gray images to green reference
+        run: python scripts/normalize_ceo_portraits.py
+      - name: Commit optimized and aligned assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/assets/photos/hero-navy-aligned.webp public/assets/photos/hero-gray-aligned.webp
+          git diff --cached --quiet || git commit -m "Align all CEO portraits to the approved green suit reference"
+          git push origin HEAD:feature/consistent-ceo-portraits-v10
