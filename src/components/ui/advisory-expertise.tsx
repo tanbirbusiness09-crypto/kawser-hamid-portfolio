@@ -16,7 +16,6 @@ export function AdvisoryExpertise() {
       <div className="advisory-v15-atmosphere" aria-hidden="true">
         <span className="advisory-v15-glow-one" />
         <span className="advisory-v15-glow-two" />
-        <span className="advisory-v15-grid" />
       </div>
       <div className="advisory-v15-art" role="img" aria-label="Golden investor licensing certificate and Saudi skyline" />
       <div className="advisory-v15-art-shade" aria-hidden="true" />
@@ -30,12 +29,10 @@ export function AdvisoryExpertise() {
             <stop offset="100%" stopColor="#a86c32" stopOpacity=".15"/>
           </linearGradient>
         </defs>
-        <path className="advisory-v15-divider-line" d="M-20 12 C 315 4 365 67 700 53 S 1250 53 1620 16"/>
         <path className="advisory-v15-divider-light" d="M-20 12 C 315 4 365 67 700 53 S 1250 53 1620 16"/>
       </svg>
 
       <svg className="advisory-v15-orbit" viewBox="0 0 900 570" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-        <path className="advisory-v15-orbit-track" d="M29 523 C 49 272 171 65 411 37 C 616 13 819 139 875 359"/>
         <path className="advisory-v15-orbit-light" d="M29 523 C 49 272 171 65 411 37 C 616 13 819 139 875 359"/>
         <circle className="advisory-v15-orbit-point" cx="411" cy="37" r="3.4"/>
       </svg>
@@ -61,7 +58,6 @@ export function AdvisoryExpertise() {
 
         <div className="advisory-v15-services" aria-label="Executive advisory specialties">
           <svg className="advisory-v15-service-thread" viewBox="0 0 1400 75" preserveAspectRatio="none" aria-hidden="true">
-            <path className="advisory-v15-service-track" d="M-20 51 C 135 0 222 64 367 40 S 616 4 720 39 S 988 62 1089 26 S 1315 20 1420 48"/>
             <path className="advisory-v15-service-spark" d="M-20 51 C 135 0 222 64 367 40 S 616 4 720 39 S 988 62 1089 26 S 1315 20 1420 48"/>
           </svg>
           {services.map((service, index) => (
