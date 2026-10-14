@@ -133,3 +133,45 @@
   .portrait-controls button{width:30px;height:30px}
 }
 @media(prefers-reduced-motion:reduce){.writing-pen{display:none}.portrait-dots span,.portrait-controls button{transition:none}}
+
+/* V8: stable seated portraits, reduced 3D rotating expertise objects, cinematic title */
+.executive-copy h1{font-size:clamp(75px,8.15vw,136px);line-height:.86;letter-spacing:-.052em;margin-bottom:27px}
+.premium-name-line{display:block;position:relative;width:max-content;max-width:100%;line-height:.91;overflow:hidden;padding-bottom:.085em;margin-bottom:-.065em}
+.premium-name-reveal{display:block;will-change:transform,opacity,filter}
+.premium-name-gold .premium-name-reveal{color:transparent;background:linear-gradient(108deg,#d6a353,#ffe5aa 53%,#bf8d43);-webkit-background-clip:text;background-clip:text}
+.premium-name-gold:after{content:"";position:absolute;inset:-8% -20%;pointer-events:none;background:linear-gradient(100deg,transparent 43%,#fff2cb55 49%,transparent 55%);transform:translateX(-140%);animation:executive-gold-glint 2.1s ease-in-out 1.65s 1 both}
+@keyframes executive-gold-glint{from{transform:translateX(-145%)}to{transform:translateX(145%)}}
+.writing-pen{display:none}
+.portrait-parallax .consultancy-ceo{right:14%;bottom:-11%;width:69%;height:116%;object-fit:contain;object-position:center bottom;transform:none;will-change:opacity,filter}
+.expertise-orbit-card{position:absolute;z-index:5;filter:none!important;background:none!important;border:0!important;box-shadow:none!important;display:block!important;perspective:900px;transform-style:preserve-3d;pointer-events:none}
+.expertise-flip{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform}
+.expertise-face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;border:1px solid #d5aa6699;color:#efcc89;background:linear-gradient(138deg,#342b25e6,#0c1422e9 78%);box-shadow:inset 0 0 15px #d9a35720,0 7px 32px #05070bab,0 0 18px #bb8b4650;overflow:hidden;backdrop-filter:blur(8px)}
+.expertise-face-back{transform:rotateY(180deg)}
+.expertise-face span{font-family:Inter,system-ui,sans-serif;color:#f2d5a1;text-align:center;font-size:clamp(9px,.77vw,12px);font-weight:600;line-height:1.26;max-width:90%;text-wrap:balance}
+.expertise-face svg{width:clamp(24px,2.1vw,34px);height:clamp(24px,2.1vw,34px);flex:0 0 auto}
+.symbolic-layer>.expertise-orbit-card.symbolic-license{left:20%;top:13%;width:14%;height:19%}
+.symbolic-layer>.expertise-orbit-card.symbolic-calendar{left:12%;top:53%;width:13%;height:16%}
+.symbolic-layer>.expertise-orbit-card.symbolic-business{right:8%;top:21%;width:14%;height:17%}
+.symbolic-layer>.expertise-orbit-card.symbolic-advisory{right:3%;top:60%;width:13%;height:16%}
+.symbolic-license .expertise-face{background:linear-gradient(144deg,#cba25b,#f1d492 38%,#aa773d 96%);border-color:#ffe1a1;box-shadow:inset 0 0 18px #fff4d451,0 10px 30px #000a,0 0 18px #f1b85c65}
+.symbolic-license .expertise-face span,.symbolic-license .expertise-face svg{color:#422f19}
+@media(max-width:1450px){.executive-copy h1{font-size:clamp(75px,8vw,116px)}}
+@media(max-width:1170px){.executive-copy h1{font-size:clamp(69px,7.6vw,97px)}}
+@media(max-width:700px){
+ .executive-copy h1{font-size:clamp(61px,15.8vw,100px);line-height:.89;margin-bottom:23px}
+ .premium-name-line{margin-inline:auto}
+ .expertise-face{border-radius:9px;gap:4px}
+ .expertise-face span{font-size:clamp(5.5px,1.7vw,8px);max-width:95%}
+ .expertise-face svg{width:clamp(16px,4.1vw,25px);height:clamp(16px,4.1vw,25px)}
+ .symbolic-layer>.expertise-orbit-card.symbolic-license{left:13%;top:11%;width:19%;height:17%}
+ .symbolic-layer>.expertise-orbit-card.symbolic-calendar{left:5%;top:48%;width:18%;height:15%}
+ .symbolic-layer>.expertise-orbit-card.symbolic-business{right:7%;top:21%;width:19%;height:16%}
+ .symbolic-layer>.expertise-orbit-card.symbolic-advisory{right:2%;top:59%;width:18%;height:15%}
+ .portrait-parallax .consultancy-ceo{right:3%;bottom:-14%;width:88%;height:108%}
+}
+@media(max-width:390px){.executive-copy h1{font-size:15.8vw}.expertise-face span{font-size:5.6px}}
+@media(prefers-reduced-motion:reduce){
+ .premium-name-reveal{filter:none!important;transform:none!important}
+ .premium-name-gold:after{animation:none!important;display:none}
+ .expertise-flip{transition:none!important}
+}
