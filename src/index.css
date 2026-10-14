@@ -175,3 +175,42 @@
  .premium-name-gold:after{animation:none!important;display:none}
  .expertise-flip{transition:none!important}
 }
+
+/* V9: match the approved Golden Riyadh hero reference with a photographic background asset. */
+.executive-page{background:#06101d}
+.skyline-layer{
+  inset:0;
+  background-image:url('/assets/brand/golden-riyadh-hero.webp');
+  background-size:cover;
+  background-position:center center;
+  background-repeat:no-repeat;
+  opacity:1;
+}
+.skyline-shade{
+  background:
+    linear-gradient(90deg,rgba(4,12,23,.85) 0%,rgba(4,12,23,.66) 23%,rgba(4,12,23,.32) 43%,rgba(4,12,23,.025) 71%,rgba(4,12,23,.08) 100%),
+    linear-gradient(180deg,rgba(4,12,23,.25),transparent 26%,transparent 69%,rgba(4,12,23,.22));
+}
+.corner-arc,.consultancy-stage .gold-stage,.consultancy-stage .orbit{display:none}
+.consultancy-stage .scene-backglow{
+  background:radial-gradient(ellipse at 54% 54%,rgba(204,140,51,.10),transparent 64%);
+  filter:blur(18px);
+}
+.mouse-glow{opacity:.45}
+.expertise-face{background:linear-gradient(140deg,rgba(20,26,31,.87),rgba(7,13,23,.91));}
+.symbolic-license .expertise-face{background:linear-gradient(140deg,#ebcc83,#c8944c 68%,#94703d)}
+@media(min-width:701px){
+ .skyline-layer{background-position:center center}
+ .executive-inner{min-height:100svh}
+}
+@media(max-width:700px){
+ .skyline-layer{
+  background-size:auto 73%;
+  background-position:61% bottom;
+  opacity:.87;
+ }
+ .skyline-shade{
+  background:linear-gradient(180deg,#06101d 1%,rgba(6,16,29,.94) 23%,rgba(6,16,29,.56) 53%,rgba(6,16,29,.17) 85%,#06101d 100%);
+ }
+ .consultancy-stage .scene-backglow{opacity:.45}
+}
