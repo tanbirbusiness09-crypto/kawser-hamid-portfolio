@@ -342,3 +342,52 @@
   .advisory-v12 h2{font-size:37px;}
   .advisory-v12-service-title{font-size:9px;letter-spacing:.07em;}
 }
+
+
+/* V14 — Independent gold motion effects matching the approved annotated design. */
+.advisory-v12{isolation:isolate}
+.advisory-edge-wave,.advisory-license-orbit,.advisory-license-platform,.advisory-service-wave{
+  pointer-events:none;position:absolute;display:block;overflow:visible;
+}
+.advisory-edge-wave{top:-12px;left:0;width:100%;height:105px;z-index:6;filter:drop-shadow(0 1px 5px #eac47875)}
+.advisory-edge-glow{fill:none;stroke:#e2ad55;stroke-width:9;opacity:.14;filter:blur(5px)}
+.advisory-edge-line{fill:none;stroke:url(#advisory-edge-gradient);stroke-width:2;opacity:.92}
+.advisory-edge-spark{fill:none;stroke:#fff0b5;stroke-width:2.7;stroke-dasharray:65 2250;animation:advisory-spark-travel 11s linear infinite}
+.advisory-license-orbit{z-index:0;top:7%;right:-2%;width:60%;height:64%;opacity:.82;filter:drop-shadow(0 0 6px #dfab6255)}
+.advisory-orbit-line{fill:none;stroke:url(#advisory-orbit-gradient);stroke-width:1.6}
+.advisory-orbit-trail{fill:none;stroke:#ffdda0;stroke-width:2.6;stroke-dasharray:70 1500;animation:advisory-orbit-travel 12s linear infinite}
+.advisory-orbit-node{fill:#ffe2a4;filter:drop-shadow(0 0 6px #ffc56d);animation:advisory-light-pulse 3.5s ease-in-out infinite alternate}
+.advisory-orbit-node-b{animation-delay:.9s}.advisory-orbit-node-c{animation-delay:1.8s}
+.advisory-license-platform{z-index:0;top:48%;right:-5%;width:68%;height:22%;opacity:.86;filter:drop-shadow(0 0 10px #f2b9665e)}
+.advisory-platform-halo{fill:none;stroke:#f5c77d;stroke-width:15;opacity:.1;filter:blur(5px)}
+.advisory-platform-outer{fill:none;stroke:#efc27d;stroke-width:2.5;opacity:.83}
+.advisory-platform-inner{fill:none;stroke:#dda452;stroke-width:1.65;opacity:.72}
+.advisory-platform-glint{fill:none;stroke:#ffe3a9;stroke-width:2;stroke-dasharray:110 2000;animation:advisory-spark-travel 13s linear infinite}
+.advisory-v12-services{isolation:isolate;}
+.advisory-service-wave{top:-11px;left:-2%;width:104%;height:112px;z-index:0;filter:drop-shadow(0 1px 5px #c4935468)}
+.advisory-service-wave-base{fill:none;stroke:#bb8950;stroke-width:1.35;opacity:.58}
+.advisory-service-wave-glint{fill:none;stroke:#ffe3a7;stroke-width:2;stroke-dasharray:80 2400;animation:advisory-spark-travel 12s linear infinite}
+.advisory-service-light{fill:#ffe1a0;filter:drop-shadow(0 0 6px #f2b65f);animation:advisory-light-pulse 3.2s ease-in-out infinite alternate}
+.advisory-service-light.light-two{animation-delay:.7s}.advisory-service-light.light-three{animation-delay:1.3s}
+.advisory-v12-service{z-index:1}
+.advisory-v12::before{display:none}
+.advisory-v12-gold-curve{display:none}
+@keyframes advisory-spark-travel{to{stroke-dashoffset:-2300}}
+@keyframes advisory-orbit-travel{to{stroke-dashoffset:-1570}}
+@keyframes advisory-light-pulse{from{opacity:.35;transform:scale(.8);transform-origin:center}to{opacity:1;transform:scale(1.2);transform-origin:center}}
+@media(max-width:1100px){
+  .advisory-edge-wave{height:88px;}
+  .advisory-license-orbit{width:66%;right:-7%;top:9%;opacity:.65}
+  .advisory-license-platform{right:-13%;top:49%;width:76%;opacity:.72}
+  .advisory-service-wave{opacity:.65}
+}
+@media(max-width:700px){
+  .advisory-edge-wave{height:57px;top:-7px;opacity:.8}
+  .advisory-license-orbit{top:18%;right:-20%;width:116%;height:340px;opacity:.27}
+  .advisory-license-platform{top:34%;right:-10%;width:107%;height:120px;opacity:.26}
+  .advisory-service-wave{display:none}
+  .advisory-v12-service{border-top:1px solid #b9924938;padding-top:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  .advisory-edge-spark,.advisory-orbit-trail,.advisory-platform-glint,.advisory-service-wave-glint,.advisory-orbit-node,.advisory-service-light{animation:none!important}
+}
