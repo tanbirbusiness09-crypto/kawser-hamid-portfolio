@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1680 960" preserveAspectRatio="xMidYMid slice">
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0.1" y2="1"><stop stop-color="#060b15"/><stop offset=".48" stop-color="#1a2030"/><stop offset=".83" stop-color="#553b29"/><stop offset="1" stop-color="#050a12"/></linearGradient>
+<radialGradient id="cityglow"><stop stop-color="#ffc36f" stop-opacity=".36"/><stop offset=".4" stop-color="#c58d49" stop-opacity=".13"/><stop offset="1" stop-color="#050b14" stop-opacity="0"/></radialGradient>
+<pattern id="windows" width="19" height="25" patternUnits="userSpaceOnUse"><rect x="6" y="7" width="3" height="8" rx=".5" fill="#f3c377" opacity=".48"/><rect x="14" y="7" width="2" height="5" fill="#f3b966" opacity=".23"/></pattern>
+<linearGradient id="build" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#0d131e"/><stop offset=".5" stop-color="#24222a"/><stop offset="1" stop-color="#0c111b"/></linearGradient>
+</defs>
+<rect width="1680" height="960" fill="url(#sky)"/><ellipse cx="1150" cy="605" rx="860" ry="365" fill="url(#cityglow)"/>
+<g opacity=".50" fill="#1c2029">
+<path d="M0 770V620h55v-130h48v130h34V540h52v230zm219 0V590h75V455h32v315zm160 0V530h50v80h42V420h56v350zm215 0V555h62V370h28v400zm170 0V610h65V465h60v305zm255 0V505h70V350h22v420zm230 0V545h40V400h65v370zm198 0V505h82v265z"/>
+</g>
+<g fill="url(#build)" stroke="#b48a4a" stroke-opacity=".31" stroke-width="2">
+<path d="M575 805V500h55V440h30v365z"/><path d="M690 805V370h60V310h20v495z"/>
+<path d="M805 805V235h32v-75l23 75h30v570z"/>
+<path d="M920 805V385h50V235h28v150h42v420z"/>
+<path d="M1060 805V320h44V247h20V170h8v77h24v558z"/>
+<path d="M1190 805V245h34V145h35v100h32v560z"/>
+<path d="M1315 805V385h35V274h43v111h30v420z"/>
+<path d="M1450 805V415h35V325h49v90h37v390z"/>
+<path d="M1590 805V430h40V330h29v475z"/>
+</g>
+<g opacity=".52"><path d="M1190 245h102v42h-102z" fill="#947248"/><path d="M1190 276h102" stroke="#d5ad71"/><path d="M820 245l15-68 15 68" fill="none" stroke="#f9c67e" stroke-width="3"/></g>
+<g fill="url(#windows)" opacity=".92">
+<rect x="576" y="495" width="90" height="305"/><rect x="691" y="370" width="78" height="430"/>
+<rect x="807" y="244" width="81" height="557"/><rect x="921" y="385" width="118" height="417"/>
+<rect x="1060" y="320" width="98" height="482"/><rect x="1192" y="265" width="98" height="537"/>
+<rect x="1315" y="385" width="108" height="417"/><rect x="1450" y="414" width="120" height="390"/>
+</g>
+<path d="M0 805q320-100 625-24t550 0q250-90 505 32v148H0z" fill="#0b1119" opacity=".94"/>
+<g fill="#e5ab5a" opacity=".65"><circle cx="120" cy="777" r="2.1"/><circle cx="377" cy="799" r="1.9"/><circle cx="608" cy="808" r="2.2"/><circle cx="911" cy="796" r="1.5"/><circle cx="1380" cy="804" r="2"/></g>
+</svg>
