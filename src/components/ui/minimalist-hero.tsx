@@ -91,11 +91,11 @@ export function MinimalistHero({ logoText, navLinks, portraits, bookingHref, pro
             <div className="scene-ring scene-ring-back" aria-hidden="true" />
             <div className="scene-ring scene-ring-front" aria-hidden="true" />
             <motion.div className="portrait-stage" style={reducedMotion ? undefined : { x: driftX, y: driftY }}>
-              <motion.div key={'left-'+active} className="portrait-panel panel-left" initial={reducedMotion?false:{opacity:0,x:32,scale:.93}} animate={{opacity:1,x:0,scale:1}} transition={{duration:.7,ease:gentle}}>
+              <motion.div key={'left-'+active} className="portrait-panel panel-left" initial={reducedMotion?false:{opacity:0,x:32,scale:.93,rotateY:13,rotateZ:-4}} animate={{opacity:1,x:0,scale:1,rotateY:13,rotateZ:-4}} transition={{duration:.7,ease:gentle}}>
                 <img src={left.src} alt={left.alt} loading="lazy"/>
                 <span className="panel-shine" aria-hidden="true" />
               </motion.div>
-              <motion.div key={'right-'+active} className="portrait-panel panel-right" initial={reducedMotion?false:{opacity:0,x:-28,scale:.94}} animate={{opacity:1,x:0,scale:1}} transition={{duration:.7,ease:gentle}}>
+              <motion.div key={'right-'+active} className="portrait-panel panel-right" initial={reducedMotion?false:{opacity:0,x:-28,scale:.94,rotateY:-11,rotateZ:3}} animate={{opacity:1,x:0,scale:1,rotateY:-11,rotateZ:3}} transition={{duration:.7,ease:gentle}}>
                 <img src={right.src} alt={right.alt} loading="lazy"/>
                 <span className="panel-shine" aria-hidden="true" />
               </motion.div>
