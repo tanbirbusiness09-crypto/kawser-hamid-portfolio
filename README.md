@@ -1,37 +1,35 @@
-# Kawser Hamid — Premium Hero Section Prototype
+# Kawser Hamid — Executive Portfolio Hero
 
-This is a **local frontend hero-section prototype** based on the approved executive-portfolio design. It includes a functional 3D carousel and responsive layout. It does **not** include a live appointment database, payment gateway, or calendar integration.
+A responsive, one-page CEO portfolio hero prototype for **Kawser Hamid**, CEO & Founder of KH Dream Services Ltd.
 
-## Run on Windows
+## Status
 
-1. Extract this ZIP into a folder such as `C:\Users\shopd\Documents\Kawser-Hamid-Portfolio`.
-2. Double-click `index.html` to view the self-contained frontend in Chrome/Edge.
-3. Alternatively, in PowerShell from the folder, run `python -m http.server 5500` and open `http://localhost:5500/`. Stop it with Ctrl+C.
+- GitHub and Vercel production deployment connected.
+- HTML, CSS, JS, SVG icons, 3D coverflow, autoplay, swipe, arrows, keyboard controls and email inquiry demo are committed.
+- **Photos are not committed yet**. The six CEO-themed carousel scenes and official brand WebP must be imported using the workflow below. Until then, the carousel uses a temporary official-site CEO portrait fallback and is not the final design.
+
+## Upload the photo assets (one manual action)
+
+1. Download the specifically prepared `portfolio-assets.zip` shared in ChatGPT.
+2. Open the repository **Add file → Upload files** page.
+3. Upload that ZIP under the exact name `portfolio-assets.zip` to the `main` branch, then choose **Commit changes**.
+4. GitHub Actions workflow `.github/workflows/import-portfolio-assets.yml` extracts only approved WebP image assets into `assets/photos/` and `assets/brand/`, commits them to `main`, and removes the ZIP from the repository.
+5. Vercel automatically deploys the new commit. Check GitHub **Actions** for the import job and Vercel for the deployment status.
+
+The ZIP contains **only** the 8 necessary WebP assets, not development notes or secrets. If Actions is disabled, upload the extracted `assets` folder instead.
 
 ## Features
 
-- Personal `KH | Kawser Hamid` monogram and secondary KH Dream logo.
-- Animated 3D coverflow carousel of **six** CEO-themed images.
-- Navigation arrows, position indicators, swipe gestures, keyboard arrows, play/pause.
-- Autoplay stops on hover/focus and browser tab backgrounding. Respects reduced-motion setting.
-- Mobile responsive header and navigation menu.
-- Premium consultation button opens a **demo inquiry form** that prepares an email using the visitor's own email client.
-- Top nav links scroll to clearly marked **phase 2 section previews** below the hero.
+- Personal `KH | Kawser Hamid` identity, KH Dream as secondary company affiliation.
+- 3D animated six-image carousel.
+- Responsive desktop and mobile layout.
+- Keyboard, swipe, pause/play, carousel dots and reduced-motion support.
+- Inquiry form that opens `mailto:`. **No live booking/payment backend exists yet.**
 
-## Important
+## Important publishing notes
 
-- AI-generated images are **conceptual illustrations**; do not present depicted speeches, clients, or branch openings as verified historical events. Replace with real, permission-cleared photography if making factual claims.
-- Hero claims and statistics must be verified with the CEO before production publication. This prototype intentionally uses non-numeric focus labels instead of invented performance metrics.
-- Company logo was cropped from the supplied user reference poster; replace with the exact high-resolution approved logo before publishing.
-- **No live bookings are captured.** To add payment, calendar availability, dashboard and secure records, a backend is required.
-- Company email in the demo: `support@khdreamservices.com`.
+AI-generated meeting/seminar/branch-opening visuals are **illustrations**, not documentary evidence of past events. Verify portraits and logo quality before treating them as official photographs. Do not claim unverified results, qualifications, dates or client numbers.
 
-## Files
+## Technology
 
-- `index.html`: semantic markup / hero + future section previews
-- `styles.css`: responsive premium design / carousel visuals
-- `script.js`: carousel interaction / menu / demo inquiry
-- `assets/photos/*.webp`: optimized editorial images
-- `assets/brand/*`: personal monogram, source-derived company logo, skyline drawing
-
-No npm install or React build needed.
+Static HTML + CSS + vanilla JavaScript (no Node, npm or React required).
