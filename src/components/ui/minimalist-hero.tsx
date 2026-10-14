@@ -1,15 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
-import type { PointerEvent, KeyboardEvent } from 'react';
+import { useState } from 'react';
+import type { PointerEvent } from 'react';
 import { AnimatePresence, motion, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion';
-import { ArrowRight, ChevronLeft, ChevronRight, Menu, X, FileBadge2, CalendarClock, Building2, ChartNoAxesCombined } from 'lucide-react';
+import { ArrowRight, Menu, X, FileBadge2, CalendarClock, Building2, ChartNoAxesCombined } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 type NavLink = { label: string; href: string };
-type Portrait = { src: string; alt: string; suit: string };
 export interface MinimalistHeroProps {
   logoText: string;
   navLinks: NavLink[];
-  portraits: Portrait[];
   bookingHref: string;
   profileHref: string;
   className?: string;
@@ -28,12 +26,9 @@ function ExecutiveMark() {
 
 const gentle = [0.22, 1, 0.36, 1] as const;
 
-export function MinimalistHero({ logoText, navLinks, portraits, bookingHref, profileHref, className }: MinimalistHeroProps) {
+export function MinimalistHero({ logoText, navLinks, bookingHref, profileHref, className }: MinimalistHeroProps) {
   const reducedMotion = useReducedMotion();
-  const [active, setActive] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [pause, setPause] = useState(false);
-  const startTouchX = useRef<number | null>(null);
   const px = useMotionValue(0);
   const py = useMotionValue(0);
   const sx = useSpring(px, { stiffness: 50, damping: 25 });
@@ -42,29 +37,12 @@ export function MinimalistHero({ logoText, navLinks, portraits, bookingHref, pro
   const sceneY = useTransform(sy, [-1,1], [-10,10]);
   const haloX = useTransform(sx, [-1,1], ['44%','63%']);
   const haloY = useTransform(sy, [-1,1], ['39%','62%']);
-  const count = portraits.length;
-  const go = (amount: number) => setActive(current => (current + amount + count) % count);
-  const chosen = (offset: number) => portraits[(active + offset + count) % count];
-
-  useEffect(() => {
-    if (pause || menuOpen || reducedMotion || count < 2) return;
-    const timer = window.setInterval(() => setActive(v => (v + 1) % count), 6300);
-    return () => window.clearInterval(timer);
-  }, [pause, menuOpen, reducedMotion, count]);
-
   function track(e: PointerEvent<HTMLElement>) {
     if (reducedMotion || e.pointerType !== 'mouse') return;
     const rect = e.currentTarget.getBoundingClientRect();
     px.set((e.clientX - rect.left) / rect.width * 2 - 1);
     py.set((e.clientY - rect.top) / rect.height * 2 - 1);
   }
-
-  function keyboard(e: KeyboardEvent<HTMLElement>) {
-    if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
-    if (e.key === 'ArrowRight') { e.preventDefault(); go(1); }
-  }
-
-  const panelOffsets = [-2, -1, 1, 2];
 
   return (
     <main id="home" className={cn('executive-page',className)} onPointerMove={track} onPointerLeave={() => {px.set(0);py.set(0);}}>
