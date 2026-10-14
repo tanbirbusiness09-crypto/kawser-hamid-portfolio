@@ -1,18 +1,26 @@
-# Kawser Hamid Executive Portfolio — Hero V5
+# Kawser Hamid — Executive Portfolio
 
-A coded, interactive implementation of the approved luxury navy/gold hero concept.
+**V6: Luxury Saudi Business Consultancy Hero** based on the approved customer reference design.
 
-## Stack
-React 19, TypeScript, Vite, Tailwind CSS 4, Framer Motion, Lucide React, shadcn-compatible `src/components/ui` structure.
+### Technology
+React 19 · TypeScript · Vite · Tailwind CSS 4 · Framer Motion · Lucide
 
-## Run
-```bash
+### Visual implementation
+- Original CSS/SVG layered dark Riyadh city background and illuminated gold floor rings
+- Background-free seated CEO portrait, `public/assets/photos/hero-navy-seated.webp`
+- Four animated symbolic 3D visuals: Investor License, Private Consultation, Saudi Business Setup, Executive Advisory
+- Custom inline SVG personal KH monogram, responsive dark/gold typography
+- Mouse-following glow, subtle motion, mobile adaptation and reduced-motion preferences
+
+### Run
+```sh
 npm install
 npm run dev
 npm run build
 ```
 
-`src/components/ui/minimalist-hero.tsx` renders the animated hero. `src/App.tsx` configures the five portraits and action links. Images are stored at `public/assets/photos` and the Riyadh-inspired SVG background at `public/assets/brand/riyadh-night.svg`.
+### Consultancy CTA
+Current action: email inquiry to `support@khdreamservices.com`.
+**There is no paid booking engine yet.** Calendar availability, client dashboard, payment and automated appointment confirmation are future features.
 
-## Scope
-Landing-page hero only; the Premium Consultation button currently initiates an email inquiry, not a paid booking. The hero does **not** claim unverified years of experience or client figures. Respect reduced-motion settings.
+See `TODO.md` for current release checks.
