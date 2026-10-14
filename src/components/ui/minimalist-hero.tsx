@@ -29,7 +29,10 @@ const heroPortraits = [
   {src:'/assets/photos/hero-green-aligned.webp',alt:'Kawser Hamid seated in a green executive suit'},
   {src:'/assets/photos/hero-navy-aligned-v11.webp',alt:'Kawser Hamid seated in a navy executive suit'},
   {src:'/assets/photos/hero-charcoal-aligned-v11.webp',alt:'Kawser Hamid seated in a charcoal executive suit'},
-  {src:'/assets/photos/hero-burgundy-aligned-v11.webp',alt:'Kawser Hamid seated in a burgundy executive suit'}
+  {src:'/assets/photos/hero-burgundy-aligned-v11.webp',alt:'Kawser Hamid seated in a burgundy executive suit'},
+  {src:'/assets/photos/hero-gray-chair-v17.webp',alt:'Kawser Hamid seated in a charcoal gray executive suit'},
+  {src:'/assets/photos/hero-navy-standing-v17.webp',alt:'Kawser Hamid standing in a navy suit, hands in pockets'},
+  {src:'/assets/photos/hero-navy-standing-alt-v17.webp',alt:'Kawser Hamid standing in a navy executive suit, alternate pose'}
 ] as const;
 
 function PremiumNameLine({text,gold=false,delay=0,reduced=false}:{text:string;gold?:boolean;delay?:number;reduced?:boolean}) {
