@@ -93,3 +93,43 @@
 @media(max-width:950px){.consultancy-stage{right:-16%;width:81%;min-height:560px}.executive-eyebrow{white-space:normal;line-height:1.8;max-width:340px}}
 @media(max-width:700px){.kh-monogram{width:52px;height:48px}.logo-separator{height:22px}.executive-logo{gap:9px}.executive-copy h1{font-size:clamp(75px,18vw,119px)}.executive-eyebrow{max-width:100%;margin-left:auto;margin-right:auto;font-size:8px;white-space:normal}.executive-role{font-size:14px}.executive-description{max-width:340px;font-size:13px}.expertise-strip{justify-content:center;margin:22px auto 0;gap:9px}.expertise-strip span{font-size:9px}.expertise-strip svg{width:17px;height:17px}.consultancy-stage{position:relative;order:2;min-height:0;height:clamp(450px,112vw,590px);width:calc(100% + 38px);right:auto;bottom:auto;margin:0 -19px;overflow:hidden}.symbolic-license{left:10%;top:2%;width:29%;height:34%}.symbolic-calendar{left:1%;top:40%;width:27%;height:24%}.symbolic-business{right:2%;top:17%;width:28%;height:25%}.symbolic-advisory{right:-3%;top:49%;width:25%;height:24%}.consultancy-ceo{height:108%;width:88%;right:3%;bottom:-14%}.certificate-paper{padding:8px 5px}.certificate-overline{font-size:4px}.certificate-icon{width:43px;height:43px}.certificate-icon svg{width:30px}.certificate-paper strong{font-size:10px}.certificate-seal{width:22px;height:22px;font-size:14px}.symbolic-calendar svg{width:30px;height:30px}.symbolic-calendar b,.symbolic-advisory b{font-size:8px}.sky-towers svg,.symbolic-advisory svg{width:37px;height:37px}.sky-towers span{font-size:16px}.symbolic-business b{font-size:7px}.orbit-back{opacity:.4}.consultancy-stage .gold-stage{bottom:1%;height:29%}}
 @media(max-width:390px){.consultancy-stage{height:420px;width:calc(100% + 28px);margin-inline:-14px}.executive-eyebrow{font-size:7px}.expertise-strip span{font-size:8px}}
+
+/* V7 – animated portrait slideshow, reduced-scale 3D consultancy elements and pen-reveal heading */
+.writing-row{display:block;position:relative;width:max-content;max-width:100%;white-space:nowrap;line-height:.92}
+.writing-row .writing-text{display:inline-block;will-change:clip-path}
+.writing-row.writing-gold .writing-text{color:transparent;background:linear-gradient(112deg,#d7a552 0%,#ffe4a6 45%,#c68e41 100%);background-clip:text;-webkit-background-clip:text}
+.writing-pen{position:absolute;z-index:2;top:12%;height:35%;width:3px;border-left:1px solid #f6d487;color:#f4cb7a;filter:drop-shadow(0 0 8px #edb75c);pointer-events:none}
+.writing-pen svg{position:absolute;top:-16px;left:-8px;transform:rotate(-38deg)}
+.portrait-parallax{position:absolute;inset:0;z-index:10;pointer-events:none}
+.portrait-parallax .consultancy-ceo{position:absolute;z-index:10;pointer-events:none;will-change:opacity,transform,filter}
+.portrait-controls{position:absolute;z-index:30;bottom:2.4%;left:52%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;pointer-events:auto}
+.portrait-controls button{width:34px;height:34px;display:grid;place-items:center;color:#f2d399;background:#0c1019cc;border:1px solid #d7ad6e7a;border-radius:50%;transition:background .2s,box-shadow .2s}
+.portrait-controls button:hover,.portrait-controls button:focus-visible{background:#48341f;box-shadow:0 0 12px #d8ab4d80;outline-offset:3px}
+.portrait-dots{display:flex;align-items:center;gap:5px}.portrait-dots span{width:6px;height:6px;background:#a28e77;border-radius:9px;opacity:.55;transition:width .35s,background .35s}
+.portrait-dots span.active{width:25px;background:#eac477;opacity:1}
+.symbolic-layer{perspective:1100px;transform-style:preserve-3d}
+.symbolic-layer>div{backface-visibility:hidden;transform-style:preserve-3d}
+.symbolic-layer .symbol-inner{height:100%;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px}
+.symbolic-license{left:19%;top:6%;width:21%;height:30%}
+.symbolic-calendar{left:9%;top:48%;width:20%;height:20%}
+.symbolic-business{right:7%;top:17%;width:22%;height:22%}
+.symbolic-advisory{right:1%;top:57%;width:20%;height:20%}
+.symbolic-layer .certificate-icon svg{width:39px;height:39px}
+.symbolic-layer .symbol-inner svg{max-width:46px;max-height:46px}
+.symbolic-layer .symbol-inner b{font-size:clamp(9px,.76vw,12px);text-align:center;line-height:1.25}
+.symbolic-layer .symbolic-business b{white-space:normal;margin-inline:5px}
+.symbolic-layer .symbolic-calendar .symbol-inner{gap:9px}
+@media(max-width:700px){
+  .writing-row{margin-inline:auto}
+  .writing-pen svg{width:20px;height:20px}
+  .symbolic-license{left:12%;top:5%;width:25%;height:30%}
+  .symbolic-calendar{left:4%;top:43%;width:23%;height:21%}
+  .symbolic-business{right:6%;top:18%;width:25%;height:22%}
+  .symbolic-advisory{right:1%;top:55%;width:22%;height:20%}
+  .symbolic-layer .symbol-inner{gap:4px}
+  .symbolic-layer .symbol-inner b{font-size:7px}
+  .symbolic-layer .symbol-inner svg{max-width:30px;max-height:30px}
+  .portrait-controls{left:50%;bottom:2%;gap:8px}
+  .portrait-controls button{width:30px;height:30px}
+}
+@media(prefers-reduced-motion:reduce){.writing-pen{display:none}.portrait-dots span,.portrait-controls button{transition:none}}
