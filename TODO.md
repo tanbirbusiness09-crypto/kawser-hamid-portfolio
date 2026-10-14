@@ -1,10 +1,13 @@
-# Executive Hero V5 — reference implementation
-- [x] New React/TypeScript + Framer Motion 3D carousel component
-- [x] 5 generated transparent seated executive portraits (different suits)
-- [x] Dark Riyadh skyline SVG, gold halo/rings and glass side cards
-- [x] Minimal copy, CEO attribution and consultation CTAs
-- [x] Mobile breakpoints, swipe, keyboard support, reduced-motion handling
-- [ ] GitHub preview branch and Vercel production build verification
-- [ ] Approve production and verify live assets
+# Approved Luxury Consultancy Hero — V6
 
-This is a real website component, not a flat image of the design. The booking link opens an email inquiry; payment/appointment backend is not implemented.
+- [x] Review approved reference and current public React project
+- [x] Preserve main executive portrait and dark Saudi skyline atmosphere
+- [x] Replace repetitive portrait cards with Investor License, Private Consultation, Saudi Business Setup and Executive Advisory 3D symbolic elements
+- [x] Redesign KH logo as a clean responsive White–Gold monogram
+- [x] Preserve Kawser Hamid title, business introduction and two main calls to action
+- [x] Keep cursor-following gold glow, subtle floating animations and mobile layout
+- [x] Verify React/TypeScript production build on Vercel preview
+- [ ] Review live visual rendering in actual desktop/mobile browsers with the client
+- [ ] Build real paid booking, availability/calendar and payment backend (separate future phase)
+
+The booking button remains an **email inquiry**, not an automatic or paid appointment booking system.
