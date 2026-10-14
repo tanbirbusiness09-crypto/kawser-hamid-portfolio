@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { PointerEvent } from 'react';
 import { AnimatePresence, motion, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion';
-import { ArrowRight, Menu, X, FileBadge2, CalendarClock, Building2, ChartNoAxesCombined, ChevronLeft, ChevronRight, PenLine, Globe2, Handshake, Landmark, TrendingUp } from 'lucide-react';
+import { ArrowRight, Menu, X, FileBadge2, CalendarClock, Building2, ChartNoAxesCombined, ChevronLeft, ChevronRight, Globe2, Handshake, Landmark, TrendingUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 type NavLink = { label: string; href: string };
@@ -27,39 +27,67 @@ function ExecutiveMark() {
 const gentle = [0.22, 1, 0.36, 1] as const;
 const heroPortraits = [
   {src:'/assets/photos/hero-navy-seated.webp',alt:'Kawser Hamid in a navy executive suit'},
-  {src:'/assets/photos/hero-gray-seated.webp',alt:'Kawser Hamid in a grey executive suit'},
-  {src:'/assets/photos/hero-burgundy-seated.webp',alt:'Kawser Hamid in a burgundy executive suit'},
   {src:'/assets/photos/hero-green-seated.webp',alt:'Kawser Hamid in an olive executive suit'},
-  {src:'/assets/photos/hero-black-seated.webp',alt:'Kawser Hamid in a black executive suit'}
+  {src:'/assets/photos/hero-gray-seated.webp',alt:'Kawser Hamid in a grey executive suit'}
 ] as const;
 
-function WritingLine({text,gold=false,delay=0,reduced=false}:{text:string;gold?:boolean;delay?:number;reduced?:boolean}) {
-  return <span aria-hidden="true" className={gold?'writing-row writing-gold':'writing-row'}>
-    <motion.span className="writing-text" initial={reduced?false:{clipPath:'inset(0 100% 0 0)',opacity:.6}} animate={{clipPath:'inset(0 0% 0 0)',opacity:1}} transition={{duration:reduced?0:1.8,delay:reduced?0:delay,ease:[.35,.02,.1,1]}}>{text}</motion.span>
-    {!reduced && <motion.span className="writing-pen" initial={{left:'0%',opacity:0}} animate={{left:'100%',opacity:[0,1,1,0]}} transition={{left:{duration:1.8,delay,ease:[.35,.02,.1,1]},opacity:{duration:1.8,delay,times:[0,.09,.88,1]}}}><PenLine size={26} strokeWidth={1.35}/></motion.span>}
+function PremiumNameLine({text,gold=false,delay=0,reduced=false}:{text:string;gold?:boolean;delay?:number;reduced?:boolean}) {
+  return <span className={gold?'premium-name-line premium-name-gold':'premium-name-line'} aria-hidden="true">
+    <motion.span className="premium-name-reveal"
+      initial={reduced?false:{opacity:0,y:'90%',filter:'blur(12px)'}}
+      animate={{opacity:1,y:'0%',filter:'blur(0px)'}}
+      transition={{duration:reduced?0:1.05,delay:reduced?0:delay,ease:[.22,1,.36,1]}}>
+      {text}
+    </motion.span>
   </span>;
 }
 
+const expertiseCards = [
+  {className:'symbolic-license',front:{label:'Investor License',Icon:FileBadge2},back:{label:'Market Entry',Icon:Globe2}},
+  {className:'symbolic-calendar',front:{label:'Private Consultation',Icon:CalendarClock},back:{label:'Executive Session',Icon:Handshake}},
+  {className:'symbolic-business',front:{label:'Business Setup',Icon:Building2},back:{label:'Company Formation',Icon:Landmark}},
+  {className:'symbolic-advisory',front:{label:'Executive Advisory',Icon:ChartNoAxesCombined},back:{label:'Growth Strategy',Icon:TrendingUp}}
+] as const;
+
+function RotatingExpertise({item,index,flipped,reduced}:{item:(typeof expertiseCards)[number];index:number;flipped:boolean;reduced:boolean}) {
+  const Front = item.front.Icon;
+  const Back = item.back.Icon;
+  const duration = 15 + index * 1.4;
+  return <motion.div className={`expertise-orbit-card ${item.className}`} aria-hidden="true"
+    animate={reduced?undefined:{x:[0,11,0,-9,0],y:[0,-8,0,8,0],rotateX:[-4,8,-4],rotateZ:[index%2?4:-4,index%2?-2:2,index%2?4:-4]}}
+    transition={{duration,repeat:Infinity,ease:'easeInOut',delay:-index*1.5}}>
+    <motion.div className="expertise-flip" initial={false}
+      animate={{rotateY:!reduced&&flipped?180:0}}
+      transition={{duration:1.35,ease:[.22,1,.36,1]}}>
+      <div className="expertise-face expertise-face-front">
+        <Front aria-hidden="true" size={34} strokeWidth={1.25}/>
+        <span>{item.front.label}</span>
+      </div>
+      <div className="expertise-face expertise-face-back">
+        <Back aria-hidden="true" size={34} strokeWidth={1.25}/>
+        <span>{item.back.label}</span>
+      </div>
+    </motion.div>
+  </motion.div>;
+}
 
 export function MinimalistHero({ logoText, navLinks, bookingHref, profileHref, className }: MinimalistHeroProps) {
   const reducedMotion = useReducedMotion();
   const [menuOpen, setMenuOpen] = useState(false);
   const [portraitIndex, setPortraitIndex] = useState(0);
-  const [portraitDirection, setPortraitDirection] = useState(1);
   const [portraitPaused, setPortraitPaused] = useState(false);
   const [symbolMode, setSymbolMode] = useState(0);
   useEffect(() => {
     if (reducedMotion || portraitPaused) return;
-    const timer = window.setInterval(() => { setPortraitDirection(1); setPortraitIndex(i=>(i+1)%heroPortraits.length); }, 5500);
+    const timer = window.setInterval(() => { setPortraitIndex(i=>(i+1)%heroPortraits.length); }, 6200);
     return () => window.clearInterval(timer);
   }, [reducedMotion, portraitPaused]);
   useEffect(() => {
     if (reducedMotion) return;
-    const timer = window.setInterval(() => setSymbolMode(i=>(i+1)%2), 6800);
+    const timer = window.setInterval(() => setSymbolMode(i=>(i+1)%2), 8500);
     return () => window.clearInterval(timer);
   }, [reducedMotion]);
   function movePortrait(step:number) {
-    setPortraitDirection(step);
     setPortraitIndex(i=>(i+step+heroPortraits.length)%heroPortraits.length);
   }
   const px = useMotionValue(0);
@@ -101,7 +129,7 @@ export function MinimalistHero({ logoText, navLinks, bookingHref, profileHref, c
         <section className="executive-hero" aria-labelledby="executive-name">
           <motion.div className="executive-copy" initial={reducedMotion?false:{opacity:0,y:26}} animate={{opacity:1,y:0}} transition={{duration:.9,ease:gentle}}>
             <p className="executive-eyebrow">BUSINESS SETUP <i/> INVESTOR LICENSING <i/> EXECUTIVE ADVISORY</p>
-            <h1 id="executive-name" aria-label="Kawser Hamid"><WritingLine text="Kawser" delay={.25} reduced={Boolean(reducedMotion)}/><WritingLine text="Hamid" gold delay={1.4} reduced={Boolean(reducedMotion)}/></h1>
+            <h1 id="executive-name" aria-label="Kawser Hamid"><PremiumNameLine text="Kawser" delay={.28} reduced={Boolean(reducedMotion)}/><PremiumNameLine text="Hamid" gold delay={.53} reduced={Boolean(reducedMotion)}/></h1>
             <div className="executive-role">CEO &amp; Founder, KH Dream Services Ltd</div>
             <div className="executive-rule"/>
             <p className="executive-description">Guiding global investors and business leaders to establish, expand and succeed in Saudi Arabia through trusted advisory and end-to-end solutions.</p>
@@ -122,48 +150,18 @@ export function MinimalistHero({ logoText, navLinks, bookingHref, profileHref, c
             <div className="orbit orbit-back" aria-hidden="true" />
             <div className="gold-stage" aria-hidden="true"><div className="stage-disc"/><div className="stage-ring stage-ring-outer"/><div className="stage-ring stage-ring-inner"/></div>
             <motion.div className="symbolic-layer" style={reducedMotion?undefined:{x:sceneX,y:sceneY}}>
-              <motion.div className="symbolic-license" aria-hidden="true" animate={reducedMotion?undefined:{y:[0,-9,0],rotateZ:[-8,-5,-8],rotateY:[-8,5,-8]}} transition={{duration:9,repeat:Infinity,ease:"easeInOut"}}>
-                <AnimatePresence mode="wait" initial={false}>
-                  <motion.div key={'certificate-'+symbolMode} className="certificate-paper" initial={{opacity:0,rotateY:-18,scale:.95}} animate={{opacity:1,rotateY:0,scale:1}} exit={{opacity:0,rotateY:18,scale:.96}} transition={{duration:.65}}>
-                    <span className="certificate-overline">SAUDI BUSINESS ADVISORY</span>
-                    <span className="certificate-icon">{symbolMode===0?<FileBadge2 size={42} strokeWidth={1.2}/>:<Globe2 size={42} strokeWidth={1.2}/>}</span>
-                    <strong>{symbolMode===0?<>INVESTOR<br/>LICENSE</>:<>SAUDI<br/>MARKET ENTRY</>}</strong>
-                    <i className="certificate-rule"/><span className="certificate-lines"><i/><i/><i/></span><span className="certificate-seal">✦</span>
-                  </motion.div>
-                </AnimatePresence>
-              </motion.div>
-              <motion.div className="symbolic-calendar" animate={reducedMotion?undefined:{y:[0,8,0],rotateY:[-8,7,-8],rotateZ:[-6,-8,-6]}} transition={{duration:8.2,repeat:Infinity,ease:"easeInOut",delay:.4}}>
-                <AnimatePresence mode="wait" initial={false}>
-                  <motion.div className="symbol-inner" key={'calendar-'+symbolMode} initial={{opacity:0,rotateY:-24}} animate={{opacity:1,rotateY:0}} exit={{opacity:0,rotateY:24}} transition={{duration:.55}}>
-                    {symbolMode===0?<CalendarClock size={42} strokeWidth={1.35} aria-hidden="true"/>:<Handshake size={42} strokeWidth={1.35} aria-hidden="true"/>}
-                    <b>{symbolMode===0?<>PRIVATE<br/>CONSULTATION</>:<>EXECUTIVE<br/>SESSION</>}</b>
-                  </motion.div>
-                </AnimatePresence>
-              </motion.div>
-              <motion.div className="symbolic-business" animate={reducedMotion?undefined:{y:[0,-7,0],rotateY:[7,-8,7],rotateZ:[4,6,4]}} transition={{duration:10,repeat:Infinity,ease:"easeInOut",delay:.9}}>
-                <AnimatePresence mode="wait" initial={false}>
-                  <motion.div className="symbol-inner" key={'business-'+symbolMode} initial={{opacity:0,rotateY:-24}} animate={{opacity:1,rotateY:0}} exit={{opacity:0,rotateY:24}} transition={{duration:.55}}>
-                    <div className="sky-towers">{symbolMode===0?<Building2 size={52} strokeWidth={1.2}/>:<Landmark size={52} strokeWidth={1.2}/>}<span>✦</span></div>
-                    <b>{symbolMode===0?'SAUDI BUSINESS SETUP':'COMPANY FORMATION'}</b>
-                  </motion.div>
-                </AnimatePresence>
-              </motion.div>
-              <motion.div className="symbolic-advisory" animate={reducedMotion?undefined:{y:[0,9,0],rotateY:[-8,8,-8],rotateZ:[7,5,7]}} transition={{duration:9.4,repeat:Infinity,ease:"easeInOut",delay:1.3}}>
-                <AnimatePresence mode="wait" initial={false}>
-                  <motion.div className="symbol-inner" key={'advisory-'+symbolMode} initial={{opacity:0,rotateY:-24}} animate={{opacity:1,rotateY:0}} exit={{opacity:0,rotateY:24}} transition={{duration:.55}}>
-                    {symbolMode===0?<ChartNoAxesCombined size={50} strokeWidth={1.3} aria-hidden="true"/>:<TrendingUp size={50} strokeWidth={1.3} aria-hidden="true"/>}
-                    <b>{symbolMode===0?<>EXECUTIVE<br/>ADVISORY</>:<>GROWTH<br/>STRATEGY</>}</b>
-                  </motion.div>
-                </AnimatePresence>
-              </motion.div>
+              {expertiseCards.map((item,index)=><RotatingExpertise key={item.className} item={item} index={index} flipped={Boolean(symbolMode)} reduced={Boolean(reducedMotion)}/>)}
             </motion.div>
             <motion.div className="portrait-parallax" onMouseEnter={()=>setPortraitPaused(true)} onMouseLeave={()=>setPortraitPaused(false)}>
-              <AnimatePresence initial={false} custom={portraitDirection}>
-                <motion.img key={heroPortraits[portraitIndex].src} className="consultancy-ceo" src={heroPortraits[portraitIndex].src} alt={heroPortraits[portraitIndex].alt} draggable={false} fetchPriority={portraitIndex===0?'high':'auto'}
-                  custom={portraitDirection} initial={reducedMotion?false:{opacity:0,x:portraitDirection*42,scale:.945,filter:'blur(8px)'}}
-                  animate={{opacity:1,x:0,scale:1,filter:'blur(0px)'}}
-                  exit={reducedMotion?undefined:{opacity:0,x:-portraitDirection*38,scale:1.035,filter:'blur(7px)'}}
-                  transition={{duration:reducedMotion?0:.95,ease:gentle}}/>
+              <AnimatePresence initial={false} mode="sync">
+                <motion.img key={heroPortraits[portraitIndex].src}
+                  className="consultancy-ceo" src={heroPortraits[portraitIndex].src}
+                  alt={heroPortraits[portraitIndex].alt}
+                  draggable={false} fetchPriority={portraitIndex===0?'high':'auto'}
+                  initial={reducedMotion?false:{opacity:0,filter:'blur(5px)'}}
+                  animate={{opacity:1,filter:'blur(0px)'}}
+                  exit={{opacity:0,filter:'blur(5px)'}}
+                  transition={{duration:reducedMotion?0:.85,ease:[.4,0,.2,1]}}/>
               </AnimatePresence>
             </motion.div>
             <div className="portrait-controls" onMouseEnter={()=>setPortraitPaused(true)} onMouseLeave={()=>setPortraitPaused(false)} aria-label="CEO portrait slideshow">
