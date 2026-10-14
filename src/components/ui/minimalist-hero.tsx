@@ -27,8 +27,8 @@ function ExecutiveMark() {
 const gentle = [0.22, 1, 0.36, 1] as const;
 const heroPortraits = [
   {src:'/assets/photos/hero-green-seated.webp',alt:'Kawser Hamid in an olive executive suit'},
-  {src:'/assets/photos/hero-navy-seated.webp',alt:'Kawser Hamid in a navy executive suit'},
-  {src:'/assets/photos/hero-gray-seated.webp',alt:'Kawser Hamid in a grey executive suit'}
+  {src:'/assets/photos/hero-navy-aligned.webp',alt:'Kawser Hamid in a navy executive suit'},
+  {src:'/assets/photos/hero-gray-aligned.webp',alt:'Kawser Hamid in a grey executive suit'}
 ] as const;
 
 function PremiumNameLine({text,gold=false,delay=0,reduced=false}:{text:string;gold?:boolean;delay?:number;reduced?:boolean}) {
