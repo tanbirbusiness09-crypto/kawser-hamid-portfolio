@@ -1,7 +1,4 @@
 import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
-
-type AdvisoryExpertiseProps = { bookingHref: string };
 
 const areas = [
   { title: 'Business Setup', description: 'Company formation and establishment services.', icon: '/assets/advisory/icons/business-setup.svg' },
@@ -10,7 +7,7 @@ const areas = [
   { title: 'Executive Advisory', description: 'Personalized support for business leaders.', icon: '/assets/advisory/icons/executive-advisory.svg' }
 ] as const;
 
-export function AdvisoryExpertise({ bookingHref }: AdvisoryExpertiseProps) {
+export function AdvisoryExpertise() {
   const reduceMotion = useReducedMotion();
   const intro = reduceMotion ? undefined : { initial: { opacity: 0, y: 28 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: .25 }, transition: { duration: .95, ease: [0.22, 1, 0.36, 1] as const } };
 
@@ -23,13 +20,7 @@ export function AdvisoryExpertise({ bookingHref }: AdvisoryExpertiseProps) {
         <p className="advisory-v12-kicker"><span aria-hidden="true" /> EXECUTIVE ADVISORY</p>
         <h2 id="advisory-heading">Expertise That <strong>Moves Business Forward.</strong></h2>
         <p className="advisory-v12-description">Practical guidance, strategic insight, and end-to-end support for investors and business leaders entering and growing in Saudi Arabia.</p>
-        <div className="advisory-v12-actions">
-          <a className="advisory-v12-primary" href={bookingHref}>Book Private Consultation <ArrowRight size={18} aria-hidden="true"/></a>
-          <a className="advisory-v12-secondary" href="https://khdreamservices.com/" target="_blank" rel="noopener noreferrer">
-            <span className="advisory-v12-play" aria-hidden="true"><ArrowUpRight size={19}/></span>
-            <span>Company Overview <small>KH Dream Services</small></span>
-          </a>
-        </div>
+
       </motion.div>
       <div className="advisory-v12-services" aria-label="Specialist advisory areas">
         {areas.map((item,index)=><motion.a key={item.title}

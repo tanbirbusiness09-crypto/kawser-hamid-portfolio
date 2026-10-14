@@ -17,6 +17,6 @@ export default function App() {
       {label:'Contact',href:'mailto:support@khdreamservices.com'},
     ]}
     />
-    <AdvisoryExpertise bookingHref={book} />
+    <AdvisoryExpertise />
   </>;
 }
