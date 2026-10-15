@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import type { PointerEvent } from 'react';
 import { AnimatePresence, motion, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion';
-import { ArrowRight, Menu, X, FileBadge2, CalendarClock, Building2, ChartNoAxesCombined, ChevronLeft, ChevronRight, Globe2, Handshake, Landmark, TrendingUp } from 'lucide-react';
+import { ArrowRight, FileBadge2, CalendarClock, Building2, ChartNoAxesCombined, ChevronLeft, ChevronRight, Globe2, Handshake, Landmark, TrendingUp } from 'lucide-react';
+import { AdaptiveNavigationPill } from '@/components/ui/3d-adaptive-navigation-bar';
 import { cn } from '@/lib/utils';
 
 type NavLink = { label: string; href: string };
@@ -74,7 +75,6 @@ function RotatingExpertise({item,index,flipped,reduced}:{item:(typeof expertiseC
 
 export function MinimalistHero({ logoText, navLinks, bookingHref, profileHref, className }: MinimalistHeroProps) {
   const reducedMotion = useReducedMotion();
-  const [menuOpen, setMenuOpen] = useState(false);
   const [portraitIndex, setPortraitIndex] = useState(0);
   const [portraitPaused, setPortraitPaused] = useState(false);
   const [symbolMode, setSymbolMode] = useState(0);
@@ -119,13 +119,11 @@ export function MinimalistHero({ logoText, navLinks, bookingHref, profileHref, c
             <ExecutiveMark /><span className="logo-separator" aria-hidden="true" />
             <span className="executive-logo-word">KAWser <em>HAMID</em></span>
           </a>
-          <nav className="executive-nav" aria-label="Main navigation">
-            {navLinks.map((l,i)=><a key={l.label} href={l.href} className={i===0?'selected':''}>{l.label}</a>)}
-          </nav>
+          <div className="adaptive-nav-slot">
+            <AdaptiveNavigationPill items={navLinks} />
+          </div>
           <a href={bookingHref} className="gold-pill header-book">Book Consultation <ArrowRight size={18} /></a>
-          <button type="button" className="mobile-menu-btn" aria-label={menuOpen?'Close menu':'Open menu'} aria-expanded={menuOpen} onClick={()=>setMenuOpen(v=>!v)}>{menuOpen?<X/>:<Menu/>}</button>
         </header>
-        <AnimatePresence>{menuOpen && <motion.nav className="responsive-nav" initial={{opacity:0,y:-8}} animate={{opacity:1,y:0}} exit={{opacity:0,y:-8}} aria-label="Mobile navigation">{navLinks.map(l=><a key={l.label} href={l.href} onClick={()=>setMenuOpen(false)}>{l.label}</a>)}<a href={bookingHref}>Book consultation <ArrowRight size={15}/></a></motion.nav>}</AnimatePresence>
 
         <section className="executive-hero" aria-labelledby="executive-name">
           <motion.div className="executive-copy" initial={reducedMotion?false:{opacity:0,y:26}} animate={{opacity:1,y:0}} transition={{duration:.9,ease:gentle}}>

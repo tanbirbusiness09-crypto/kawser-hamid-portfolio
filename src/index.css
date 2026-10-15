@@ -569,3 +569,85 @@ body{overflow-x:hidden;}
 @media(prefers-reduced-motion:reduce){
   .constellation-background-canvas{opacity:.55!important;}
 }
+
+
+/* V19 — adaptive metallic navigation pill for the dark constellation header. */
+.executive-header{isolation:isolate;}
+.adaptive-nav-slot{
+  position:absolute;z-index:64;
+  left:50%;top:50%;transform:translate(-50%,-50%);
+  display:flex;align-items:center;justify-content:center;
+}
+.executive-header .executive-logo{position:relative;z-index:1}
+.executive-header .header-book{position:relative;z-index:1;margin-left:auto}
+.adaptive-pill{
+  position:relative;height:55px;max-width:min(526px,calc(100vw - 26px));
+  overflow:hidden;flex:0 0 auto;border-radius:100px;
+  background:linear-gradient(145deg,#fff 0%,#f8f8fa 15%,#edeef1 41%,#e5e6ea 72%,#dadde1 100%);
+  border:1px solid rgba(255,255,255,.90);
+  box-shadow:0 5px 11px #0008,0 13px 28px #0005,
+    inset 0 2px 2px #fff,inset 0 -3px 7px #0002,inset 2px 2px 8px #0001;
+  color:#181c23;transition:box-shadow .25s ease;pointer-events:auto;
+}
+.adaptive-pill-expanded{
+  box-shadow:0 8px 20px #0009,0 21px 45px #0006,
+    inset 0 2px 2px #fff,inset 0 -3px 9px #0003,
+    inset 3px 4px 12px #0001;
+}
+.adaptive-pill-highlight{
+  position:absolute;top:0;left:6%;right:6%;height:2px;border-radius:99px;
+  background:linear-gradient(90deg,transparent,#fff 14%,#fff 86%,transparent);pointer-events:none;
+}
+.adaptive-pill-reflection{
+  position:absolute;inset:1px;pointer-events:none;border-radius:inherit;
+  background:linear-gradient(174deg,#ffffff89 0%,#ffffff30 24%,transparent 55%),
+    radial-gradient(ellipse at 24% 12%,#ffffff7e,transparent 49%);
+}
+.adaptive-pill-content{position:relative;z-index:1;width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:0 11px;}
+.adaptive-pill-trigger{
+  width:100%;height:100%;border:0;background:none;
+  display:flex;align-items:center;justify-content:center;gap:7px;
+  color:#1d222b;font:700 14px/1 'Manrope',Inter,Arial,sans-serif;
+  letter-spacing:.015em;cursor:pointer;white-space:nowrap;
+  text-shadow:0 1px 0 #fff9;
+}
+.adaptive-pill-trigger svg{opacity:.63}
+.adaptive-pill-items{width:100%;height:100%;display:flex;align-items:center;justify-content:center;gap:1px;white-space:nowrap;}
+.adaptive-pill-link{
+  position:relative;flex:0 1 auto;min-width:0;
+  padding:10px clamp(8px,.95vw,14px);
+  border-radius:40px;color:#656870;text-align:center;
+  font:600 12px/1.3 'Manrope',Inter,Arial,sans-serif;
+  letter-spacing:.008em;transition:color .22s,background .22s,transform .22s;
+}
+.adaptive-pill-link:hover{color:#20242c;background:#ffffff9c;transform:translateY(-1px)}
+.adaptive-pill-link.adaptive-pill-active{color:#15181f;font-weight:800;background:#ffffff70;box-shadow:inset 0 1px 2px #fff;}
+.adaptive-pill-link.adaptive-pill-active::after{
+  content:"";position:absolute;bottom:6px;left:35%;right:35%;height:2px;
+  background:#bf9854;border-radius:4px;
+}
+.adaptive-pill-close{width:26px;height:28px;flex:0 0 26px;display:grid;place-items:center;margin-left:2px;border-radius:99px;border:0;background:#e2e3e8;color:#535862;}
+.adaptive-pill-close:hover{background:#d4d6dd;color:#10151f;}
+.adaptive-pill a:focus-visible,.adaptive-pill button:focus-visible{outline:2px solid #ad7b29;outline-offset:-3px;border-radius:999px;}
+@media(max-width:1250px){.executive-header .header-book{padding:11px 14px;font-size:12px;}}
+@media(max-width:1090px){
+  .adaptive-nav-slot{left:auto;right:0;transform:translateY(-50%);}
+  .executive-header .header-book{display:none;}
+  .executive-header .executive-logo{margin-right:150px;}
+}
+@media(max-width:700px){
+  .adaptive-pill{height:48px;max-width:calc(100vw - 22px);}
+  .adaptive-pill-content{padding-inline:7px;}
+  .adaptive-pill-trigger{font-size:12px;}
+  .adaptive-pill-link{padding:9px clamp(4px,1.4vw,9px);font-size:clamp(9.5px,2.9vw,11px);letter-spacing:-.015em;}
+  .adaptive-pill-close{width:20px;flex-basis:20px;margin-left:0}
+  .adaptive-pill-close svg{width:12px;height:12px}
+  .adaptive-nav-slot{right:0}
+}
+@media(max-width:390px){
+  .executive-header .executive-logo-word{font-size:9px;letter-spacing:.07em}
+  .adaptive-pill-link{padding-inline:4px;font-size:9.5px}
+}
+@media(prefers-reduced-motion:reduce){
+  .adaptive-pill,.adaptive-pill-link{transition:none!important;}
+}
