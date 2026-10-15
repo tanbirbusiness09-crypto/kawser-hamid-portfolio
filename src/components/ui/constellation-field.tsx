@@ -70,7 +70,7 @@ export default function ConstellationField({
     const lightMode = mode === "light" || (
       mode === "auto" && window.matchMedia("(prefers-color-scheme: light)").matches
     );
-    const tone = lightMode ? "139,105,20" : "230,200,121";
+    const tone = lightMode ? "105,108,115" : "219,222,229";
     const nodes: Node[] = [];
     let width = 1;
     let height = 1;
