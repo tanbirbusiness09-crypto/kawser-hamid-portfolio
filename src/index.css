@@ -508,3 +508,64 @@
   .advisory-v15-divider-light,.advisory-v15-orbit-light,
   .advisory-v15-service-spark{animation:none!important;opacity:0}
 }
+
+
+/* V18 — One shared Constellation Field behind every portfolio section. */
+html,body,#root{min-height:100%;background:#070914;}
+body{overflow-x:hidden;}
+.constellation-site-shell{position:relative;min-height:100vh;background:#070914;isolation:isolate;}
+.constellation-background{
+  position:fixed;inset:0;z-index:0;
+  width:100vw;height:100vh;height:100dvh;
+  pointer-events:none;overflow:hidden;background:#070914;
+}
+.constellation-background-base{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse at 63% 36%,#121b30 0%,#0c1121 42%,#070914 100%);
+}
+.constellation-background-canvas{position:absolute;inset:0;display:block;pointer-events:none;}
+.constellation-background-vignette{
+  position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(7,9,20,.36),transparent 22%,rgba(7,9,20,.12) 54%,rgba(7,9,20,.38));
+}
+.constellation-site-content{position:relative;z-index:1;}
+/* Remove previous independently painted backgrounds, not their foreground content. */
+.executive-page,.advisory-v15{
+  background:transparent;
+  isolation:auto;
+}
+.skyline-layer,.skyline-shade,.corner-arc{display:none;}
+/* Maintain strong title contrast while still exposing the common star field. */
+.executive-page::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(90deg,rgba(7,9,20,.52) 0%,rgba(7,9,20,.20) 40%,transparent 83%);
+}
+.executive-inner{z-index:1;}
+.advisory-v15-atmosphere{opacity:.55;}
+.advisory-v15-art{
+  opacity:.48;
+  -webkit-mask-image:radial-gradient(ellipse at 63% 48%,#000 16%,rgba(0,0,0,.72) 51%,transparent 88%);
+  mask-image:radial-gradient(ellipse at 63% 48%,#000 16%,rgba(0,0,0,.72) 51%,transparent 88%);
+}
+.advisory-v15-art-shade{
+  background:
+    linear-gradient(90deg,rgba(7,9,20,.75) 0%,rgba(7,9,20,.58) 29%,rgba(7,9,20,.12) 58%,transparent 83%),
+    linear-gradient(180deg,transparent 17%,rgba(7,9,20,.10) 60%,rgba(7,9,20,.30) 95%);
+}
+.advisory-v15-services{
+  background:linear-gradient(180deg,rgba(10,16,31,.46),rgba(7,9,20,.66));
+  border-top:1px solid rgba(227,185,114,.15);
+  backdrop-filter:blur(7px);
+}
+.advisory-v15-service{border-radius:12px;}
+@media(max-width:700px){
+  .constellation-background-base{background:radial-gradient(ellipse at 56% 38%,#10182b 0%,#070914 85%);}
+  .constellation-background-vignette{background:linear-gradient(180deg,rgba(7,9,20,.24),transparent 48%,rgba(7,9,20,.33));}
+  .executive-page::before{background:linear-gradient(180deg,rgba(7,9,20,.47),rgba(7,9,20,.12) 53%,transparent);}
+  .advisory-v15-art{opacity:.30;}
+  .advisory-v15-art-shade{background:linear-gradient(180deg,rgba(7,9,20,.48),rgba(7,9,20,.12) 46%,rgba(7,9,20,.4) 100%);}
+  .advisory-v15-services{background:rgba(10,16,31,.48);}
+}
+@media(prefers-reduced-motion:reduce){
+  .constellation-background-canvas{opacity:.55!important;}
+}
